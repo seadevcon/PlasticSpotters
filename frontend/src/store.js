@@ -5,12 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-
+    username: 'Lisa',
+    score: 10
   },
   mutations: {
-
-  },
-  actions: {
-
+    increment (state) {
+      state.score += 10
+    }
   }
 })
