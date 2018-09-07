@@ -19,7 +19,7 @@ public class PollutionSpot {
     private Integer id;
 
     @OneToOne(optional=false, cascade=CascadeType.REMOVE)
-    @JoinColumn(name="printer")
+    @JoinColumn(name="author")
     @NotNull
     @Fetch(FetchMode.SELECT)
     private User author;
