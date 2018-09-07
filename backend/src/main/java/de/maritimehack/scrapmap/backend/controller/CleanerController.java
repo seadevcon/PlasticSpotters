@@ -32,7 +32,7 @@ public class CleanerController {
         return "Saved";
     }
 
-    @GetMapping(path = "/all")
+    @GetMapping(path = "/33all")
     public @ResponseBody
     Iterable<Cleaner> getAllCleanerss() {
         // This returns a JSON or XML with the users
