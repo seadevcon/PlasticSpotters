@@ -64,7 +64,6 @@ public class SeaRoutesController {
             con.setRequestProperty("x-api-key", MY_API_KEY_HERE);
             con.setRequestProperty("accept", "application/json");
 
-            byte[] buffer = new byte[4096];
             return con.getInputStream();
         } catch (IOException e) {
             e.printStackTrace();
