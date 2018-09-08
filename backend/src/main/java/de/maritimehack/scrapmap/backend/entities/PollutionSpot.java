@@ -20,7 +20,7 @@ public class PollutionSpot {
     @NotNull
     private User author;
 
-    private float intensity;
+    private Integer count;
 
     private String category;
 
@@ -62,14 +62,6 @@ public class PollutionSpot {
         this.imageUrl = imageUrl;
     }
 
-    public Float getIntensity() {
-        return intensity;
-    }
-
-    public void setIntensity(Float intensity) {
-        this.intensity = intensity;
-    }
-
     public Double getLat() {
         return lat;
     }
@@ -84,5 +76,13 @@ public class PollutionSpot {
 
     public void setLng(Double lng) {
         this.lng = lng;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 }
