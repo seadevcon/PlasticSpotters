@@ -1,8 +1,5 @@
 package de.maritimehack.scrapmap.backend.entities;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -25,11 +20,13 @@ public class PollutionSpot {
     @NotNull
     private User author;
 
+    private Integer count;
+
     private String category;
 
-    private Float lat;
+    private Double lat;
 
-    private Float lng;
+    private Double lng;
 
     private String imageUrl;
 
@@ -49,22 +46,6 @@ public class PollutionSpot {
         this.author = author;
     }
 
-    public Float getLat() {
-        return lat;
-    }
-
-    public void setLat(Float lat) {
-        this.lat = lat;
-    }
-
-    public Float getLng() {
-        return lng;
-    }
-
-    public void setLng(Float lng) {
-        this.lng = lng;
-    }
-
     public String getCategory() {
         return category;
     }
@@ -79,5 +60,29 @@ public class PollutionSpot {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 }

@@ -20,15 +20,17 @@ public class Cleaner {
 
     private String category;
 
-    private Float lat;
+    private Double lat;
 
-    private Float lng;
+    private Double lng;
 
     private String companyUrl;
 
     private String diagramUrl;
 
     private String iconUrl;
+
+    private String donationUrl;
 
     public Integer getId() {
         return id;
@@ -52,22 +54,6 @@ public class Cleaner {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public Float getLat() {
-        return lat;
-    }
-
-    public void setLat(Float lat) {
-        this.lat = lat;
-    }
-
-    public Float getLng() {
-        return lng;
-    }
-
-    public void setLng(Float lng) {
-        this.lng = lng;
     }
 
     public String getDiagramUrl() {
@@ -100,5 +86,21 @@ public class Cleaner {
 
     public void setCompanyUrl(String companyUrl) {
         this.companyUrl = companyUrl;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 }
