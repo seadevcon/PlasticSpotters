@@ -108,18 +108,18 @@ export default {
       const LeafIcon = L.Icon.extend({
         options: {
           shadowUrl: '',
-          iconSize: [ 38, 95 ],
+          iconSize: [ 25, 40 ],
           shadowSize: [ 0, 0 ],
-          iconAnchor: [ 22, 94 ],
+          iconAnchor: [ 5, 5 ],
           shadowAnchor: [ 0, 0 ],
-          popupAnchor: [ -3, -76 ]
+          popupAnchor: [ 6, 0 ]
         }
       })
 
       axios.get('http://localhost:8080/cleaner/all')
         .then(response => {
           response.data.forEach(vessel => {
-            const icon = new LeafIcon({ iconUrl: vessel.iconUrl })
+            const icon = new LeafIcon({ iconUrl: 'http://localhost:8000/img/shipmarker.png' })
             L.marker([ vessel.lat, vessel.lng ], { icon: icon }).addTo(this.map).bindPopup(`
           <p><a href="${vessel.companyUrl}" target="_blank">${vessel.name}</a></p>
           <p>Type: ${vessel.type}</p>
@@ -134,7 +134,8 @@ export default {
       axios.get('http://localhost:8080/pollutionSpot/all')
         .then(response => {
           response.data.forEach(report => {
-            L.marker([ report.lat, report.lng ]).addTo(this.map).bindPopup(`
+            const icon = new LeafIcon({ iconUrl: 'http://localhost:8000/img/pollutionmarker.png' })
+            L.marker([ report.lat, report.lng ], { icon: icon }).addTo(this.map).bindPopup(`
           <p>Author: ${report.author.name}</p>
           <a href="${report.imageUrl}" target="_blank"><img src="${report.imageUrl}"></a>
         `).openPopup()
