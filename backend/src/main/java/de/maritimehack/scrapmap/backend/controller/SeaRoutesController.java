@@ -38,7 +38,8 @@ public class SeaRoutesController {
     }
 
     public List<SeaRoutesWeatherPojo> getWeatherData(Float lat, Float lng) {
-        String url = BASE_URL + "ws/weather/stat/?lat=" + String.valueOf(lat) + "&lon=" + String.valueOf(lng);
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String url = BASE_URL + "ws/weather/real/?lat=" + String.valueOf(lat) + "&lon=" + String.valueOf(lng) + "&ts=" + String.valueOf();
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
@@ -18,8 +19,8 @@ public class PollutionSpot {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @OneToOne(optional=false, cascade=CascadeType.REMOVE)
-    @JoinColumn(name="author", unique = false)
+    @OneToMany(cascade=CascadeType.REMOVE)
+    @JoinColumn(name="author")
     @NotNull
     @Fetch(FetchMode.SELECT)
     private User author;
