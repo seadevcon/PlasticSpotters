@@ -14,7 +14,7 @@ public class BackendApplication {
 		SeaRoutesController seaRoutesController = new SeaRoutesController();
 		seaRoutesController.getWeatherData(52.3844f, 4.94f);*/
 
-		/*PollutionPredictor pollutionPredictor = new PollutionPredictor();
-		pollutionPredictor.calcPosition(52.3844f, 4.94f);*/
+		PollutionPredictor pollutionPredictor = new PollutionPredictor();
+		pollutionPredictor.calcPosition(52.3844f, 4.94f);
 	}
 }

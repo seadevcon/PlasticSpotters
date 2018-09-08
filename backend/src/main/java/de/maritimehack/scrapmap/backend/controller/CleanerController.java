@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,21 +22,7 @@ public class CleanerController {
     @CrossOrigin(origins = "http://localhost:8000")
     @PostMapping(path = "/add") // Map ONLY GET Requests
     public @ResponseBody
-    String addNewCleaner(@RequestParam String name, @RequestParam String type, @RequestParam String category,
-                         @RequestParam Float lat, @RequestParam Float lng, @RequestParam String companyUrl,
-                         @RequestParam String iconUrl, @RequestParam String diagramUrl) {
-        // @ResponseBody means the returned String is the response, not a view name
-        // @RequestParam means it is a parameter from the GET or POST request
-
-        Cleaner cleaner = new Cleaner();
-        cleaner.setName(name);
-        cleaner.setType(type);
-        cleaner.setCategory(category);
-        cleaner.setLat(lat);
-        cleaner.setLng(lng);
-        cleaner.setCompanyUrl(companyUrl);
-        cleaner.setDiagramUrl(diagramUrl);
-        cleaner.setIconUrl(iconUrl);
+    String addNewCleaner(@RequestBody Cleaner cleaner) {
         cleanerRepository.save(cleaner);
         return "Saved";
     }

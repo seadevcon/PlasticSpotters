@@ -12,7 +12,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.sql.Timestamp;
 import java.util.List;
 
 public class SeaRoutesController {
@@ -39,9 +38,8 @@ public class SeaRoutesController {
     }
 
     public List<SeaRoutesWeatherPojo> getWeatherData(Float lat, Float lng) {
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String url = BASE_URL + "ws/weather/real?lat=" + String.valueOf(lat) + "&lon=" + String.valueOf(lng) + "&ts=" + String.valueOf(timestamp.getTime()-2);
-        //https://api.searoutes.com/ws/weather/real?lat=52.3844&lon=4.94&ts=1501580712
+        String url = BASE_URL + "ws/weather/stat/?lat=" + String.valueOf(lat) + "&lon=" + String.valueOf(lng);
+
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             TypeFactory typeFactory = objectMapper.getTypeFactory();
