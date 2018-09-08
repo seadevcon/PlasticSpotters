@@ -15,7 +15,7 @@
    viewBox="0 0 32 32"
    id="svg2"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="marker.svg">
+   sodipodi:docname="pollutionmarker.svg">
   <metadata
      id="metadata12">
     <rdf:RDF>
@@ -40,26 +40,41 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1664"
-     inkscape:window-height="480"
+     inkscape:window-height="755"
      id="namedview8"
      showgrid="false"
-     inkscape:zoom="20.85965"
-     inkscape:cx="2.36026"
-     inkscape:cy="19.457586"
-     inkscape:window-x="98"
-     inkscape:window-y="77"
+     inkscape:zoom="10.429825"
+     inkscape:cx="-7.0459534"
+     inkscape:cy="14.736332"
+     inkscape:window-x="75"
+     inkscape:window-y="65"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg2" />
   <title
      id="title4">location</title>
+  <circle
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path4173"
+     cx="16.059713"
+     cy="9.804038"
+     r="6.6635823"
+     inkscape:export-filename="/home/wirebug/Documents/hackathon/ScrapMap/frontend/public/img/pollutionmarker.png"
+     inkscape:export-xdpi="112"
+     inkscape:export-ydpi="112" />
   <path
      d="M16 0c-5.523 0-10 4.477-10 10 0 10 10 22 10 22s10-12 10-22c0-5.523-4.477-10-10-10zM16 16c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z"
      id="path6"
-     style="fill:#448aff;fill-opacity:1" />
+     style="fill:#448aff;fill-opacity:1"
+     inkscape:export-xdpi="112.5"
+     inkscape:export-ydpi="112.5"
+     inkscape:export-filename="/home/wirebug/Documents/hackathon/ScrapMap/frontend/public/img/pollutionmarker.png" />
   <g
      id="g12"
      transform="matrix(0.0060992,0,0,-0.0060992,11.874959,13.975782)"
-     style="fill:#000000">
+     style="fill:#000000"
+     inkscape:export-xdpi="112.5"
+     inkscape:export-ydpi="112.5"
+     inkscape:export-filename="/home/wirebug/Documents/hackathon/ScrapMap/frontend/public/img/pollutionmarker.png">
     <path
        d="m 399.391,589.141 60.535,-37.051 c 10.207,0 15.363,4.199 15.363,12.644 0,5.422 -2.453,12.922 -7.226,22.59 L 334.332,838.516 37.9492,831.277 c -13.2851,-0.632 -19.8789,-7.539 -19.8789,-20.781 0,-3.023 4.1992,-7.223 12.6524,-12.644 L 92.168,760.801 27.1094,659.617 C 9.03906,630.703 0,606.887 0,588.234 0,571.328 6.00781,552.355 18.0703,531.309 L 219.574,179.816 c -4.844,22.262 -7.234,43.368 -7.234,63.25 0,35.5 11.113,70.481 33.437,104.817 l 153.614,241.258"
        style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"

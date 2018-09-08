@@ -15,7 +15,10 @@
    viewBox="0 0 32 32"
    id="svg2"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="shipmarker.svg">
+   sodipodi:docname="shipmarker.svg"
+   inkscape:export-filename="/home/wirebug/Documents/hackathon/ScrapMap/frontend/public/img/shipmarker.png"
+   inkscape:export-xdpi="112.5"
+   inkscape:export-ydpi="112.5">
   <metadata
      id="metadata12">
     <rdf:RDF>
@@ -44,8 +47,8 @@
      id="namedview8"
      showgrid="false"
      inkscape:zoom="20.85965"
-     inkscape:cx="16.210252"
-     inkscape:cy="18.425448"
+     inkscape:cx="8.3961228"
+     inkscape:cy="20.343026"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
@@ -59,6 +62,13 @@
      style="fill:#448aff;fill-opacity:1"
      inkscape:export-xdpi="112.5"
      inkscape:export-ydpi="112.5" />
+  <ellipse
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:5;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:none;stroke-opacity:1"
+     id="path4926"
+     cx="15.843986"
+     cy="10.043736"
+     rx="6.9272494"
+     ry="7.1429768" />
   <g
      id="g4188"
      transform="matrix(0.14842723,0,0,-0.14842723,5.9611326,19.951885)"
