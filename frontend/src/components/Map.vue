@@ -35,6 +35,7 @@
 
 <script>
 import store from '../store'
+import axios from 'axios'
 
 export default {
   name: 'Map',
@@ -44,55 +45,7 @@ export default {
     latlng: {
       lat: 0,
       lng: 0
-    },
-    vessels: [
-      {
-        name: 'The Ocean Cleanup',
-        link: 'https://www.theoceancleanup.com/',
-        icon: 'https://visualpharm.com/assets/393/Historic%20Ship-595b40b75ba036ed117d625d.svg',
-        type: 'Autonomous',
-        category: 'Heavy plastic',
-        diagram: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq6GhS0KpRAAo5l-6s2r7V3oXBHr0UPqu2Mwi9QIUttHQH4Mp7',
-        lat: 51.460,
-        lng: 0.970
-      },
-      {
-        name: 'Pacific Garbage Screening',
-        link: 'https://pacific-garbage-screening.de/en/startseite-2/',
-        icon: 'https://visualpharm.com/assets/540/Viking%20Ship-595b40b85ba036ed117db7b8.svg',
-        type: 'Non autonomous',
-        category: 'Small plastic',
-        diagram: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq6GhS0KpRAAo5l-6s2r7V3oXBHr0UPqu2Mwi9QIUttHQH4Mp7',
-        lat: 51.644,
-        lng: 1.191
-      },
-      {
-        name: 'Pacific Garbage Screening',
-        link: 'https://pacific-garbage-screening.de/en/startseite-2/',
-        icon: 'https://visualpharm.com/assets/178/Sailing%20Ship%20Large-595b40b85ba036ed117daf9b.svg',
-        type: 'Non autonomous',
-        category: 'Small plastic',
-        diagram: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq6GhS0KpRAAo5l-6s2r7V3oXBHr0UPqu2Mwi9QIUttHQH4Mp7',
-        lat: 51.432,
-        lng: 1.229
-      }
-    ],
-    reports: [
-      {
-        author: 'Lisa',
-        description: 'Test',
-        image: 'https://public-media.smithsonianmag.com/filer/4b/93/4b93429f-9241-4653-adb3-65ecfc7eaa5a/istock_20210548_medium.jpg',
-        lat: 51.554,
-        lng: 1.410
-      },
-      {
-        author: 'Lisa',
-        description: 'Test',
-        image: 'https://public-media.smithsonianmag.com/filer/4b/93/4b93429f-9241-4653-adb3-65ecfc7eaa5a/istock_20210548_medium.jpg',
-        lat: 51.484,
-        lng: 2.140
-      }
-    ]
+    }
   }),
   computed: {
     username () {
@@ -118,23 +71,31 @@ export default {
       }
     })
 
-    this.vessels.forEach(vessel => {
-      const icon = new LeafIcon({ iconUrl: vessel.icon })
-      L.marker([ vessel.lat, vessel.lng ], { icon: icon }).addTo(mymap).bindPopup(`
-        <p><a href="${vessel.link}" target="_blank">${vessel.name}</a></p>
-        <p>Type: ${vessel.type}</p>
-        <p>Category: ${vessel.category}</p>
-        <img src="${vessel.diagram}">
-      `).openPopup()
-    })
+    axios.get('http://localhost:8080/cleaner/all')
+      .then(response => {
+        response.data.forEach(vessel => {
+          const icon = new LeafIcon({ iconUrl: vessel.icon })
+          L.marker([ vessel.lat, vessel.lng ], { icon: icon }).addTo(mymap).bindPopup(`
+          <p><a href="${vessel.url}" target="_blank">${vessel.name}</a></p>
+          <p>Type: ${vessel.type}</p>
+          <p>Category: ${vessel.category}</p>
+          <img src="${vessel.diagram}">
+        `).openPopup()
+        })
+      })
+      .catch(error => console.log(error))
 
-    this.reports.forEach(report => {
-      L.marker([ report.lat, report.lng ]).addTo(mymap).bindPopup(`
-        <p>Author: ${report.author}</p>
-        <p>Description: ${report.description}</p>
-        <img src="${report.image}">
-      `).openPopup()
-    })
+    axios.get('http://localhost:8080/pollutionSpot/all')
+      .then(response => {
+        response.data.forEach(report => {
+          L.marker([ report.lat, report.lng ]).addTo(mymap).bindPopup(`
+          <p>Author: ${report.author}</p>
+          <p>Category: ${report.category}</p>
+          <img src="${report.image}">
+        `).openPopup()
+        })
+      })
+      .catch(error => console.log(error))
 
     mymap.on('click', e => {
       this.latlng = e.latlng
@@ -145,6 +106,14 @@ export default {
     save () {
       this.showDialog = false
       store.commit('increment')
+      axios.post('http://localhost:8080/pollutionSpot/add', {
+        author: 1,
+        category: 'Test',
+        lat: this.latlng.lat,
+        lng: this.latlng.lng
+      })
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
     }
   }
 }
