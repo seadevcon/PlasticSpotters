@@ -25,6 +25,8 @@ public class PollutionSpot {
     @NotNull
     private User author;
 
+    private Float intensity;
+
     private String category;
 
     private Float lat;
@@ -79,5 +81,13 @@ public class PollutionSpot {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Float getIntensity() {
+        return intensity;
+    }
+
+    public void setIntensity(Float intensity) {
+        this.intensity = intensity;
     }
 }
