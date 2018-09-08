@@ -10,11 +10,11 @@ public class BackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackendApplication.class, args);
-
+/*
 		SeaRoutesController seaRoutesController = new SeaRoutesController();
-		seaRoutesController.getWeatherData(52.3844f, 4.94f);
+		seaRoutesController.getWeatherData(52.3844f, 4.94f);*/
 
-		PollutionPredictor pollutionPredictor = new PollutionPredictor();
-		pollutionPredictor.calcPosition(52.3844f, 4.94f);
+		/*PollutionPredictor pollutionPredictor = new PollutionPredictor();
+		pollutionPredictor.calcPosition(52.3844f, 4.94f);*/
 	}
 }
