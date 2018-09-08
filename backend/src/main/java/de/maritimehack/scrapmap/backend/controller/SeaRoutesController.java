@@ -1,10 +1,18 @@
 package de.maritimehack.scrapmap.backend.controller;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
+import com.fasterxml.jackson.databind.type.TypeFactory;
+import de.maritimehack.scrapmap.backend.pojo.SeaRoutesWeatherPojo;
+
 import javax.net.ssl.HttpsURLConnection;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.List;
 
 public class SeaRoutesController {
     private final String MY_API_KEY_HERE = "Eq2MMoXzsI7uW1EGjYi2l6vvpJArfaQN8Cd73z4d";
@@ -25,15 +33,31 @@ public class SeaRoutesController {
 
     public String getSOme(Float[] from_point, Float[] to_point) {
         String url = BASE_URL + "/intermodal/route/" + pointBuilder(from_point[0], from_point[1]) + '/' + pointBuilder(to_point[0], from_point[1]);
-        return getJSON(url);
+        //return getJSON(url);
+        return "";
     }
 
-    public String getWeatherData(Float lat, Float lng) {
+    public List<SeaRoutesWeatherPojo> getWeatherData(Float lat, Float lng) {
         String url = BASE_URL + "ws/weather/stat/?lat=" + String.valueOf(lat) + "&lon=" + String.valueOf(lng);
-        return getJSON(url);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            TypeFactory typeFactory = objectMapper.getTypeFactory();
+            CollectionType collectionType = typeFactory.constructCollectionType(
+                    List.class, SeaRoutesWeatherPojo.class);
+            return objectMapper.readValue(getJSON(url), collectionType);
+        } catch (JsonParseException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
-    public String getJSON(String url) {
+    public InputStream getJSON(String url) {
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
             HttpsURLConnection con = (HttpsURLConnection) new URL(url).openConnection();
 
@@ -41,12 +65,7 @@ public class SeaRoutesController {
             con.setRequestProperty("accept", "application/json");
 
             byte[] buffer = new byte[4096];
-            InputStream is = con.getInputStream();
-            for (int nRead = is.read(buffer); nRead != -1; nRead = is.read(buffer)) {
-                baos.write(buffer, 0, nRead);
-            }
-            System.out.print(new String(baos.toByteArray(), "UTF8"));
-            return new String(baos.toByteArray(), "UTF8");
+            return con.getInputStream();
         } catch (IOException e) {
             e.printStackTrace();
             return null;
