@@ -19,25 +19,25 @@ public class SeaRoutesController {
     // base url for the subsequent requests
     private final String BASE_URL = "https://api.searoutes.com/";
 
-    public String pointBuilder(Float lat, Float lng) {
+    public String pointBuilder(Double lat, Double lng) {
         return "lon:" + lng + "lat:" + lat;
     }
 
-    public String latBuilder(Float lat) {
+    public String latBuilder(Double lat) {
         return "lat:" + lat;
     }
 
-    public String lngBuilder(Float lng) {
+    public String lngBuilder(Double lng) {
         return "lon:" + lng;
     }
 
-    public String getSOme(Float[] from_point, Float[] to_point) {
+    public String getSOme(Double[] from_point, Double[] to_point) {
         String url = BASE_URL + "/intermodal/route/" + pointBuilder(from_point[0], from_point[1]) + '/' + pointBuilder(to_point[0], from_point[1]);
         //return getJSON(url);
         return "";
     }
 
-    public List<SeaRoutesWeatherPojo> getWeatherData(Float lat, Float lng) {
+    public List<SeaRoutesWeatherPojo> getWeatherData(Double lat, Double lng) {
         String url = BASE_URL + "ws/weather/stat/?lat=" + String.valueOf(lat) + "&lon=" + String.valueOf(lng);
 
         ObjectMapper objectMapper = new ObjectMapper();
