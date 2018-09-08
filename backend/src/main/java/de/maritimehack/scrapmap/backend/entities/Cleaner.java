@@ -30,6 +30,8 @@ public class Cleaner {
 
     private String iconUrl;
 
+    private String donationUrl;
+
     public Integer getId() {
         return id;
     }
