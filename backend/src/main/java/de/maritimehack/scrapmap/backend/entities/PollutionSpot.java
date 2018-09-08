@@ -30,6 +30,8 @@ public class PollutionSpot {
 
     private Float lng;
 
+    private String imageUrl;
+
     public Integer getId() {
         return id;
     }
@@ -68,5 +70,13 @@ public class PollutionSpot {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

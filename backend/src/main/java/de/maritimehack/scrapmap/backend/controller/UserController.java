@@ -4,7 +4,9 @@ import de.maritimehack.scrapmap.backend.entities.User;
 import de.maritimehack.scrapmap.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,7 +17,8 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping(path = "/add") // Map ONLY GET Requests
+    @CrossOrigin(origins = "http://localhost:8000")
+    @PostMapping(path = "/add") // Map ONLY GET Requests
     public @ResponseBody
     String addNewUser(@RequestParam String name, @RequestParam String email) {
         // @ResponseBody means the returned String is the response, not a view name
@@ -28,6 +31,7 @@ public class UserController {
         return "Saved";
     }
 
+    @CrossOrigin(origins = "http://localhost:8000")
     @GetMapping(path = "/all")
     public @ResponseBody
     Iterable<User> getAllUsers() {
