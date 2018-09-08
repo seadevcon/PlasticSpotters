@@ -15,6 +15,8 @@ public class User {
 
     private String email;
 
+    private Long xp;
+
     public Integer getId() {
         return id;
     }
@@ -37,5 +39,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Long getXp() {
+        return xp;
+    }
+
+    public void setXp(Long xp) {
+        this.xp = xp;
     }
 }
