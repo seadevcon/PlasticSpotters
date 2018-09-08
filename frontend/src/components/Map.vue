@@ -110,7 +110,7 @@ export default {
           shadowUrl: '',
           iconSize: [ 25, 40 ],
           shadowSize: [ 0, 0 ],
-          iconAnchor: [ 5, 5 ],
+          iconAnchor: [ 10, 20 ],
           shadowAnchor: [ 0, 0 ],
           popupAnchor: [ 6, 0 ]
         }
