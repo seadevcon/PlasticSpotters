@@ -103,4 +103,12 @@ public class Cleaner {
     public void setLng(Double lng) {
         this.lng = lng;
     }
+
+    public String getDonationUrl() {
+        return donationUrl;
+    }
+
+    public void setDonationUrl(String donationUrl) {
+        this.donationUrl = donationUrl;
+    }
 }

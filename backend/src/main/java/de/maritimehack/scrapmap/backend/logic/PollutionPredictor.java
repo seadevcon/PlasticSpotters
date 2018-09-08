@@ -23,27 +23,37 @@ public class PollutionPredictor {
         }
     }
 
-    public Double[] getNextPosition(Double currentLat, Double currentLong, Double time, Double angle) {
-        //distance = speed * time
-        //we want to calc only the next x sec cause we need to know the next speed vector
+    public Double[] getNextPosition(Double currentLat, Double currentLong, Double time, Double bearing) {
+/*        Double distance = velocity * time;
 
-        //Double currentLatRad =
-        return null;
+        long radiusOfEarth = 6371000l;
+        Double angularDistance = distance/radiusOfEarth;
+        Double bearingRad = toRadians(bearing);
+
+        Double latRad = toRadians(currentLat);
+        Double lonRad = toRadians(currentLong);
+
+        Double newLat = Math.sin(latRad)*Math.sin(latRad) + Math.sin(latRad)*Math.sin(angularDistance)*Math.cos(bearingRad);
+        Double newLatFinal = Math.asin(newLat);
+        Double newLon = lonRad + Math.atan2(Math.sin(bearingRad) * Math.sin(angularDistance) * Math.cos(latRad), Math.cos(angularDistance) - Math.sin(latRad) * Math.sin(newLat));
+
+        return new Double[]{toDegrees(newLatFinal), (toDegrees(newLon)+540)%360-180};*/
+return null;
     }
 
 
-    public static double ToRad(double degrees)
+    public double toRadians(double degrees)
     {
         return degrees * (Math.PI / 180);
     }
 
-    public static double ToDegrees(double radians)
+    public double toDegrees(double radians)
     {
         return radians * 180 / Math.PI;
     }
 
-    public static double ToBearing(double radians) {
+    public double toBearing(double radians) {
         // convert radians to degrees (as bearing: 0...360)
-        return (ToDegrees(radians) + 360) % 360;
+        return (toDegrees(radians) + 360) % 360;
     }
 }
