@@ -18,6 +18,7 @@
             <md-select v-model="count" name="count" id="count">
               <md-option value="1">Some plastic</md-option>
               <md-option value="2">A lot of plastic</md-option>
+              <md-option value="3">Even more plastic</md-option>
             </md-select>
           </md-field>
 
@@ -135,7 +136,6 @@ export default {
           response.data.forEach(report => {
             L.marker([ report.lat, report.lng ]).addTo(this.map).bindPopup(`
           <p>Author: ${report.author.name}</p>
-          <p>Category: ${report.category}</p>
           <a href="${report.imageUrl}" target="_blank"><img src="${report.imageUrl}"></a>
         `).openPopup()
 
