@@ -8,7 +8,7 @@
               <md-icon>menu</md-icon>
             </md-button>
 
-            <span class="md-title">Pacific Garbage Map</span>
+            <span class="md-title">Plastic Spotters</span>
           </div>
 
           <div class="md-toolbar-section-end">
