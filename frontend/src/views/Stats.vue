@@ -12,8 +12,8 @@ export default {
     function drawLineColors () {
       const data = new google.visualization.DataTable()
       data.addColumn('number', 'X')
-      data.addColumn('number', 'Dogs')
-      data.addColumn('number', 'Cats')
+      data.addColumn('number', 'Vessel #1')
+      data.addColumn('number', 'Vessel #2')
 
       data.addRows([
         [0, 0, 0], [1, 10, 5], [2, 23, 15], [3, 17, 9], [4, 18, 10], [5, 9, 5],
@@ -35,7 +35,7 @@ export default {
           title: 'Time'
         },
         vAxis: {
-          title: 'Popularity'
+          title: 'Tons of garbage'
         },
         colors: ['#a52714', '#097138']
       }
