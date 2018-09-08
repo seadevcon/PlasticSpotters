@@ -14,10 +14,10 @@
 
         <md-step id="second" md-label="Report information" md-description="Add additional info">
           <md-field>
-            <label for="category">Category</label>
-            <md-select v-model="category" name="category" id="category">
-              <md-option value="Small plastic">Small plastic</md-option>
-              <md-option value="Heavy plastic">Heavy plastic</md-option>
+            <label for="count">Category</label>
+            <md-select v-model="count" name="count" id="count">
+              <md-option value="1">Some plastic</md-option>
+              <md-option value="2">A lot of plastic</md-option>
             </md-select>
           </md-field>
 
@@ -39,17 +39,19 @@
 <script>
 import store from '../store'
 import axios from 'axios'
+const HeatmapOverlay = require('../leaflet-heatmap.js')
 
 export default {
   name: 'Map',
   data: () => ({
     showDialog: false,
-    category: '',
+    count: 0,
     latlng: {
       lat: 0,
       lng: 0
     },
-    map: null
+    map: null,
+    heatmapLayer: null
   }),
   computed: {
     username () {
@@ -72,6 +74,17 @@ export default {
       this.showDialog = true
     })
 
+    this.heatmapLayer = new HeatmapOverlay({
+      radius: 0.1,
+      maxOpacity: 0.5,
+      scaleRadius: true,
+      useLocalExtrema: true,
+      latField: 'lat',
+      lngField: 'lng',
+      valueField: 'count'
+    })
+    this.map.addLayer(this.heatmapLayer)
+
     this.refresh()
   },
   methods: {
@@ -79,7 +92,7 @@ export default {
       this.showDialog = false
       axios.post('http://localhost:8080/pollutionSpot/add', {
         author: { id: 1, email: this.email, name: this.username },
-        category: this.category,
+        count: this.count,
         lat: this.latlng.lat,
         lng: this.latlng.lng,
         imageUrl: 'https://public-media.smithsonianmag.com/filer/4b/93/4b93429f-9241-4653-adb3-65ecfc7eaa5a/istock_20210548_medium.jpg'
@@ -111,6 +124,7 @@ export default {
           <p>Type: ${vessel.type}</p>
           <p>Category: ${vessel.category}</p>
           <a href="${vessel.diagramUrl}" target="_blank"><img src="${vessel.diagramUrl}"></a>
+          <a href="${vessel.donationUrl}" target="_blank" class="md-button md-primary md-raised">Donate</a>
         `).openPopup()
           })
         })
@@ -124,6 +138,11 @@ export default {
           <p>Category: ${report.category}</p>
           <a href="${report.imageUrl}" target="_blank"><img src="${report.imageUrl}"></a>
         `).openPopup()
+
+            this.heatmapLayer.setData({
+              max: 8,
+              data: response.data
+            })
           })
         })
         .catch(error => console.log(error))
@@ -132,8 +151,18 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #mapid {
   height: calc(100vh - 64px);
+}
+
+.leaflet-popup-content > a.md-button {
+  width: 100%;
+  margin: 6px 0 0 0;
+  background: rgb(68, 138, 255) !important;
+  color: rgb(255, 255, 255);
+  font-weight: 550;
+  text-align: center;
+  line-height: 36px;
 }
 </style>
