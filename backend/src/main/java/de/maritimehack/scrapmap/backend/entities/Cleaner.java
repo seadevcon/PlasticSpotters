@@ -24,9 +24,11 @@ public class Cleaner {
 
     private Float lng;
 
-    private String url;
+    private String companyUrl;
 
     private String diagramUrl;
+
+    private String iconUrl;
 
     public Integer getId() {
         return id;
@@ -68,14 +70,6 @@ public class Cleaner {
         this.lng = lng;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     public String getDiagramUrl() {
         return diagramUrl;
     }
@@ -90,5 +84,21 @@ public class Cleaner {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getIconUrl() {
+        return iconUrl;
+    }
+
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
+    }
+
+    public String getCompanyUrl() {
+        return companyUrl;
+    }
+
+    public void setCompanyUrl(String companyUrl) {
+        this.companyUrl = companyUrl;
     }
 }
